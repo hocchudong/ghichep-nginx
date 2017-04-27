@@ -1,4 +1,5 @@
 Content about nginx server
 
-- [X] HA and LB
-- [X] Configure nginx
+- [X] [Install Ngix and configuration basic](Install/installed-nginx.md).
+- [ ] HA and LB.
+- [ ] Configure nginx advanced

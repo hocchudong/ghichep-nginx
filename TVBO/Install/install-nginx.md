@@ -32,7 +32,7 @@
 
 - ##### <a name="config-basic">Các cấu hình nginx cơ bản</a>
 
-	+ Thông thường, các cấu hình dành cho *nginx* được chứa trong cây thư mục */usr/share/nginx/modules/*, */etc/nginx/conf.d/* và */etc/nginx/default.d/* với nội dung trong các file có phần mở rộng là *.conf*.
+	+ Thông thường, các cấu hình dành cho *nginx* được chứa trong cây thư mục */etc/nginx/conf.d/* và */etc/nginx/default.d/* với nội dung trong các file có phần mở rộng là *.conf* và trong file */etc/nginx/nginx.conf*.
 
 	+ Dưới đây là nội dung của một file cấu hình chính */etc/nginx/nginx.conf* được mô tả như sau:
 
@@ -254,10 +254,11 @@
 		> [auth_basic](../Pictures/Install/auth-basic.png)
 	
 		Trong bước này, bạn cần phải nhập chính xác tên user và mật khẩu của user đó mới có quyền truy cập trang website.
+		
 - # <a name="content-others">Các nội dung khác</a>
 	
 	- [ ] [Ý nghĩa của các dòng trong file cấu hình](../Configure/mean-configure.md)
-	- [ ] [Cấu hình tạo một virtual host](../Configure/create-virtual-host.md)
+	- [X] [Cấu hình tạo một virtual host](../Configure/create-virtual-host.md)
 	- [ ] [](#)
 	- [ ] [](#)
 	- [ ] [](#)
