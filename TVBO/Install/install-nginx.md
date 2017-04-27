@@ -5,6 +5,7 @@
 
 - [Cài đặt nginx](#install)
 - [Các cấu hình nginx cơ bản](#config-basic)
+- [Cấu hình giới hạn quyền truy cập](#allow)
 - [Các nội dung khác](#content-others)
 
 
@@ -226,7 +227,7 @@
 
 			}
 	
-	- Bước tiếp theo, tạo tài khoản để cấp phép truy cập bằng việc sử dụng câu lệnh sau:
+	- <a name="allow"></a>Bước tiếp theo, tạo tài khoản để cấp phép truy cập bằng việc sử dụng câu lệnh sau:
 			
 			# yum insstall httpd-tools
 			# htpasswd -c /etc/nginx/.htpasswd admin
@@ -254,7 +255,21 @@
 		> ![auth_basic](../Pictures/Install/auth-basic.png)
 	
 		Trong bước này, bạn cần phải nhập chính xác tên user và mật khẩu của user đó mới có quyền truy cập trang website.
-		
+
+	- Cấu hình giới hạn cho phép địa chỉ IP truy cập.
+
+		+ Nếu như bạn muốn giới hạn truy cập, chỉ cho phép một địa chỉ ip hoặc một dải địa chỉ ip được phép truy cập vào web server còn lại tất cả các địa chỉ khác không được phép truy cập. Thì cần thêm nội dung sau vào file cấu hình của web server theo mẫu:
+
+				Allow	ip[source_ip]| all;
+				Deny	ip[source_ip]| all;
+
+			Ví dụ:
+
+					Allow	192.168.19.0/24;
+					Deny	all;
+
+		Với 2 dòng cấu hình trên server sẽ chi cho phép các địa chỉ ip thuộc dải 192.168.19.0/24 được truy cập tới website.
+
 - # <a name="content-others">Các nội dung khác</a>
 	
 	- [ ] [Ý nghĩa của các dòng trong file cấu hình](../Configure/mean-configure.md)
