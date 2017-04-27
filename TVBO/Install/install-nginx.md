@@ -15,7 +15,7 @@
 	+ Để tiến hành cài đặt *nginx* trên hệ điều hành CentOS, bước đầu tiên cần làm đó là phải thêm EPEL reponsitory để có thể cài đặt *nginx* sử dụng câu lệnh bằng việc chạy câu lệnh sau:
 
 			# yum install epel-release
-		> [epel-release](../Pictures/Install/epel-release.png)
+		> ![epel-release](../Pictures/Install/epel-release.png)
 	
 	+ Sau khi hoàn thành chạy câu lệnh trên, ta tiến hành cài đặt *nginx* sử dụng câu lệnh:
 
@@ -28,7 +28,7 @@
 
 	+ Bước 3: Thực hiện kiểm tra việc cài đặt *nginx* đã thành công hay chưa bằng việc mở trình duyệt lên và đi tới địa chỉ url: http://your_ip, kết quả nếu như cài đặt thành công sẽ thấy được như hình dưới:
 		
-		> [installed-nginx](../Pictures/Install/installed-nginx.png)
+		> ![installed-nginx](../Pictures/Install/installed-nginx.png)
 
 - ##### <a name="config-basic">Các cấu hình nginx cơ bản</a>
 
@@ -251,7 +251,7 @@
 
 	- Kết quả sau khi chúng ta khởi động lại *nginx* và truy cập lại trang website vừa rồi (http://your_ip) trông như sau:
 
-		> [auth_basic](../Pictures/Install/auth-basic.png)
+		> ![auth_basic](../Pictures/Install/auth-basic.png)
 	
 		Trong bước này, bạn cần phải nhập chính xác tên user và mật khẩu của user đó mới có quyền truy cập trang website.
 		
