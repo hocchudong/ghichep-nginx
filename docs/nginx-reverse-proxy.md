@@ -12,7 +12,7 @@
 
 ## Mô hình.
 
-![proxy_reverse](/images/reverse.png)
+![proxy_reverse](/images/proxy_reverse.png)
 
 ## Cài đặt chi tiết .
 
