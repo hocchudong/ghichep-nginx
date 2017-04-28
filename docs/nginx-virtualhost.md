@@ -1,6 +1,6 @@
 # Thiết lập virtual host trên nginx.
 
-## 1. Tạo một cây thư mục website mới:
+
 
 - Dùng lệnh sau để tạo 1 cây thư mục mới dành cho website :
 

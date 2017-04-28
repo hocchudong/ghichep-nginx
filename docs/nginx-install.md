@@ -1,7 +1,16 @@
 # Cài đặt Nginx.
 
-- Môi trường CentOS.
+==============================================
 
+## Mục Lục.
+
+- [1. Tổng quan về nginx](#1)
+
+- [2. Cài đặt](#2)
+
+==============================================
+
+<a name="1"></a>
 ## 1. Tổng quan về Nginx.
 
 - Nginx là sản phẩm mã nguồn mở dành cho web server . Là một reverse proxy cho các giao thức HTTP, SMTP , POP3 và IMAP. Nhằm nâng cao hiệu suất xử lý khi sử dụng lượng RAM thấp . Được cấp phép bởi BSD chạy trên nền tảng UNIX, Linux và các biến thể BSD , Mac OS , Solaris, AIX, HP-UX và windows.
@@ -11,7 +20,7 @@
 - Igor Sysoev phát triển nginx từ cách đây hơn 9 năm. Vào tháng 10/2004, phiên bản 0.1.0 được phát hành rộng rãi theo giấy phép BSD. Công dụng của nginx ngoài máy chủ web, còn có thể làm proxy nghịch cho Web và làm proxy email (SMTP/POP3/IMAP). Theo thống kê của Netcraft, trong số 1 triệu website lớn nhất thế giới, có 6,52% sử dụng nginx. Tại Nga, quê hương của nginx, có đến 46,9% sử dụng máy chủ này. Nginx chỉ đứng sau Apache và IIS (của Microsoft).
 
 - Nginx cung cấp gần như tất cả các chức năng máy chủ web:
-
+<a name="2"></a>
 ## 2. Cài đặt.
 
 - Thêm repo nginx:

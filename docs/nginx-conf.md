@@ -1,5 +1,23 @@
 # Cấu hình nginx .
 
+=============================================
+
+## Mục lục.
+
+- [I. giới thiệu về file cấu hình](#i)
+
+- [II. Giải thích file cấu hình](#ii)
+
+  - [1. Main block](#1)
+  
+  - [2. Event block](#2)
+  
+  - [3. HTTP block](#3)
+
+=============================================
+<a name="i"></a>
+## I. Giới thiệu về file cấu hình.
+
 - Mặc định nginx có đường dẫn `/etc/nginx/nginx.conf`.
 
 - Nginx quản lý cấu hình theo `Derective` và `Block` chúng có thể nằm lồng ghép với nhau. Những derective không thuộc block nào sẽ nhóm lại gọi là `Main Block` những cấu hình trên Block này sẽ ảnh hường tới toàn bộ server.
@@ -86,8 +104,10 @@
 
 
     ```
-
-## 1. MAIN BLOCK .
+<a name="ii"></a>
+## II. Giải thích file cấu hình.
+<a name="1"></a>
+### 1. MAIN BLOCK .
 
 - `User nginx;` : Cấu hình quy định worker processes được chạy với tài khoản nào , ở đây là nginx.
 
@@ -104,12 +124,12 @@
 - `error_log /var/log/nginx/error.log;` Đường dẫn đến file log của nginx.
 
 - `pid /run/nginx.pid;` số PID của master process , nginx sử dụng master process để quản lý worker process.
-
-## 2. Event Block .
+<a name="2"></a>
+### 2. Event Block .
 
 - `worker_connections 1024;` Giá trị này liên quan đến worker processes, 1024 có nghĩa là mỗi worker process sẽ chịu tải là 1024 kết nối cùng lúc . Nếu chúng ta có 2 worker process thì khả năng chịu tải của server là 2048 kết nối tại một thời điểm. Giá trị này chúng ta có thể tùy thuộc vào phần cứng của máy chủ (giá trị 1024/worker process không phải là mặc định).
-
-## 3. HTTP Block .
+<a name="3"></a>
+### 3. HTTP Block .
 
 - log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                       '$status $body_bytes_sent "$http_referer" '
