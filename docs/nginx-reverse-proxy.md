@@ -12,7 +12,7 @@
 
 ## Mô hình.
 
-![proxy_reverse](/images/proxy_reverse.png)
+![proxy_reverse](/images/reverse.png)
 
 ## Cài đặt chi tiết .
 
@@ -20,38 +20,38 @@
 
 - Thêm repo nginx:
 
-```sh
-yum install epel-release
-```
+    ```sh
+    yum install epel-release
+    ```
 
 - Cài đặt nginx :
 
-```sh
-yum install nginx
+    ```sh
+    yum install nginx
 
-```
+    ```
 
 - Khởi động nginx :
 
-```sh
-systemctl start nginx
-```
+    ```sh
+    systemctl start nginx
+    ```
 
 - Khởi động `firewall-cmd` :
 
-```sh
-systemctl start firewalld
-systemctl enable firewalld
-```
+    ```sh
+    systemctl start firewalld
+    systemctl enable firewalld
+    ```
 
 - Cấu hình firewall  và restart lại dịch vụ:
 
-```sh
-sudo firewall-cmd --permanent --zone=public --add-service=http 
-sudo firewall-cmd --permanent --zone=public --add-service=https
-sudo firewall-cmd --reload
+    ```sh
+    sudo firewall-cmd --permanent --zone=public --add-service=http 
+    sudo firewall-cmd --permanent --zone=public --add-service=https
+    sudo firewall-cmd --reload
 
-```
+    ```
 
 - Truy cập vào địa chỉ để kiểm tra :
 
@@ -59,64 +59,64 @@ sudo firewall-cmd --reload
 
 - Dùng trình soạn thảo `vi` mở file cấu hình `/etc/nginx/nginx.conf `
 
-```sh
-vi /etc/nginx/nginx.conf 
-```
+    ```sh
+    vi /etc/nginx/nginx.conf 
+    ```
 
 - Tại block server sửa lại thông số như sau :
 
-```sh
-    server {
+    ```sh
+        server {
 
-        listen      80 default_server;
-        listen      [::]:80 default_server;
-        server_name _;
+            listen      80 default_server;
+            listen      [::]:80 default_server;
+            server_name _;
 
-        proxy_redirect           off;
-        proxy_set_header         X-Real-IP $remote_addr;
-        proxy_set_header         X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header         Host $http_host;
+            proxy_redirect           off;
+            proxy_set_header         X-Real-IP $remote_addr;
+            proxy_set_header         X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header         Host $http_host;
 
-        location / {
-            proxy_pass http://10.10.20.10/;
+            location / {
+                proxy_pass http://10.10.20.10/;
+            }
+
         }
 
-    }
-
-# trong đó 10.10.20.10 là địa chỉ của apache
-```
+    # trong đó 10.10.20.10 là địa chỉ của apache
+    ```
 
 - Restart lại nginx :
 
-```sh
-systemctl restart nginx 
-```
+    ```sh
+    systemctl restart nginx 
+    ```
 
 ### 2. Cài đặt trên node apache .
 
 - Cài đặt apache :
 
-```sh
-yum install httpd httpd-devel -y
-```
+    ```sh
+    yum install httpd httpd-devel -y
+    ```
 
 - Dùng trình soạn thảo `vi` mở file `/etc/httpd/conf/httpd.conf`
 
-```sh
-vi /etc/httpd/conf/httpd.conf 
-```
+    ```sh
+    vi /etc/httpd/conf/httpd.conf 
+    ```
 
 - Tìm đến dòng 196 và sửa lại thành :
 
-```sh
-LogFormat "\"%{X-Forwarded-For}i\" %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined 
-```
+    ```sh
+    LogFormat "\"%{X-Forwarded-For}i\" %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined 
+    ```
 
 - Restart lại apache :
 
-```sh
-systemctl restart httpd 
-```
+    ```sh
+    systemctl restart httpd 
+    ```
 
 ### 3. Kiểm tra .
 
