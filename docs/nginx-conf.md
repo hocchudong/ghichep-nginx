@@ -9,83 +9,83 @@
 
 - File cấu hình :
 
-```sh
-# For more information on configuration, see:
-#   * Official English Documentation: http://nginx.org/en/docs/
-#   * Official Russian Documentation: http://nginx.org/ru/docs/
+    ```sh
+    # For more information on configuration, see:
+    #   * Official English Documentation: http://nginx.org/en/docs/
+    #   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-user nginx;
-worker_processes auto;
-error_log /var/log/nginx/error.log;
-pid /run/nginx.pid;
+    user nginx;
+    worker_processes auto;
+    error_log /var/log/nginx/error.log;
+    pid /run/nginx.pid;
 
-# Load dynamic modules. See /usr/share/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
+    # Load dynamic modules. See /usr/share/nginx/README.dynamic.
+    include /usr/share/nginx/modules/*.conf;
 
-events {
-    worker_connections 1024;
-}
-
-http {
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
-
-    access_log  /var/log/nginx/access.log  main;
-
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 2048;
-
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
-
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-        }
-
-        error_page 500 502 503 504 /50x.html;
-            location = /50x.html {
-        }
+    events {
+        worker_connections 1024;
     }
 
-# Settings for a TLS enabled server.
-#
-#    server {
-#        listen       443 ssl http2 default_server;
-#        listen       [::]:443 ssl http2 default_server;
-#        server_name  _;
-#        root         /usr/share/nginx/html;
-#
-#        ssl_certificate "/etc/pki/nginx/server.crt";
-#        ssl_certificate_key "/etc/pki/nginx/private/server.key";
-#        ssl_session_cache shared:SSL:1m;
-#        ssl_session_timeout  10m;
-#        ssl_ciphers HIGH:!aNULL:!MD5;
-#        ssl_prefer_server_ciphers on;
-#
-#        # Load configuration files for the default server block.
-#        include /etc/nginx/default.d/*.conf;
-#
-#        location / {
-#        }
-#
-#        error_page 404 /404.html;
-#            location = /40x.html {
-#        }
-#
-#        error_page 500 502 503 504 /50x.html;
-#            location = /50x.html {
-#        }
-#    }
+    http {
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for"';
 
-}
+        access_log  /var/log/nginx/access.log  main;
+
+        sendfile            on;
+        tcp_nopush          on;
+        tcp_nodelay         on;
+        keepalive_timeout   65;
+        types_hash_max_size 2048;
+
+        include             /etc/nginx/mime.types;
+        default_type        application/octet-stream;
+
+        # Load modular configuration files from the /etc/nginx/conf.d directory.
+        # See http://nginx.org/en/docs/ngx_core_module.html#include
+        # for more information.
+            }
+
+            error_page 500 502 503 504 /50x.html;
+                location = /50x.html {
+            }
+        }
+
+    # Settings for a TLS enabled server.
+    #
+    #    server {
+    #        listen       443 ssl http2 default_server;
+    #        listen       [::]:443 ssl http2 default_server;
+    #        server_name  _;
+    #        root         /usr/share/nginx/html;
+    #
+    #        ssl_certificate "/etc/pki/nginx/server.crt";
+    #        ssl_certificate_key "/etc/pki/nginx/private/server.key";
+    #        ssl_session_cache shared:SSL:1m;
+    #        ssl_session_timeout  10m;
+    #        ssl_ciphers HIGH:!aNULL:!MD5;
+    #        ssl_prefer_server_ciphers on;
+    #
+    #        # Load configuration files for the default server block.
+    #        include /etc/nginx/default.d/*.conf;
+    #
+    #        location / {
+    #        }
+    #
+    #        error_page 404 /404.html;
+    #            location = /40x.html {
+    #        }
+    #
+    #        error_page 500 502 503 504 /50x.html;
+    #            location = /50x.html {
+    #        }
+    #    }
+
+    }
 
 
-```
+    ```
 
 ## 1. MAIN BLOCK .
 
@@ -93,13 +93,13 @@ http {
 
 - `worker_processes auto;` : Cấu hình chỉ ra rằng web server được xử lý bằng 1 CPU core (processor) , giá trị này tương ứng với số CPU Core có trên máy chủ. Để kiểm tra số lượng CPU Core trên máy chủ chúng ta dùng lệnh :
 
-```sh
-nproc
+    ```sh
+    nproc
 
-# hoặc 
+    # hoặc 
 
-cat /proc/cpuinfo
-```
+    cat /proc/cpuinfo
+    ```
 
 - `error_log /var/log/nginx/error.log;` Đường dẫn đến file log của nginx.
 
@@ -115,15 +115,16 @@ cat /proc/cpuinfo
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 
-```sh
-Định nghĩa một mẫu log có tên là main được sử dụng bởi access_log , các thông tin được đưa vào file tương ứng với các biến như $remote_addr, $remote_user ,....
-```
+    ```sh
+    Định nghĩa một mẫu log có tên là main được sử dụng bởi access_log , các thông tin được đưa vào file tương ứng với các 
+    biến như $remote_addr, $remote_user ,....
+    ```
 
 - access_log  /var/log/nginx/access.log  main;
 
-```sh
-Chỉ ra đường dẫn tới file log .
-```
+    ```sh
+    Chỉ ra đường dẫn tới file log .
+    ```
 
 - `sendfile on;` Cấu hình này gọi đến function sendfile để xử lý việc truyền file .
 
@@ -136,17 +137,9 @@ Chỉ ra đường dẫn tới file log .
 -  include /etc/nginx/mime.types;
    default_type        application/octet-stream;
 
-```sh
-Gọi tới file chứa danh sách các file extension trong nginx
-```
+    ```sh
+    Gọi tới file chứa danh sách các file extension trong nginx
+    ```
 
 - `types_hash_max_size 2048;`
-
-
-## 3. worker và Prefork.
-
-- Định nghĩa về worker : Đối với Apache và Nginx chúng ta có 2 mức độ hoạt động tiêu biểu đó là prefork và worker . prefork và 
-worker cho phép mở nhiều child process . Trong đó 1 thread/1 child process được gọi là prefork và many thread/1 child process được 
-gọi là worker. Về độ xử lý mạnh mẽ thì worker sẽ mạnh mẽ hơn prefork tuy nhiên đòi hỏi tài nguyên bị chiếm dụng sẽ nhiều hơn , xét về sự 
-ổn định thì prefork sẽ ổn định hơn worker. Với prefork và 1 server Unix tầm trung có thể chia cho khoảng 500 người dùng nhiều dịch vụ cùng lúc.
 

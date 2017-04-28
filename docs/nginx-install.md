@@ -1,6 +1,6 @@
 # Cài đặt Nginx.
 
-- Cài đặt trên Nginx CentOS.
+- Môi trường CentOS.
 
 ## 1. Tổng quan về Nginx.
 
@@ -16,38 +16,38 @@
 
 - Thêm repo nginx:
 
-```sh
-yum install epel-release
-```
+    ```sh
+    yum install epel-release
+    ```
 
 - Cài đặt nginx :
 
-```sh
-yum install nginx
+  ```sh
+  yum install nginx
 
-```
+  ```
 
 - Khởi động nginx :
 
-```sh
-systemctl start nginx
-```
+  ```sh
+  systemctl start nginx
+  ```
 
 - Khởi động `firewall-cmd` :
 
-```sh
-systemctl start firewalld
-systemctl enable firewalld
-```
+  ```sh
+  systemctl start firewalld
+  systemctl enable firewalld
+  ```
 
 - Cấu hình firewall  và restart lại dịch vụ:
 
-```sh
-sudo firewall-cmd --permanent --zone=public --add-service=http 
-sudo firewall-cmd --permanent --zone=public --add-service=https
-sudo firewall-cmd --reload
+  ```sh
+  sudo firewall-cmd --permanent --zone=public --add-service=http 
+  sudo firewall-cmd --permanent --zone=public --add-service=https
+  sudo firewall-cmd --reload
 
-```
+  ```
 
 - Truy cập vào địa chỉ để kiểm tra :
 
