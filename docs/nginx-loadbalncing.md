@@ -1,11 +1,29 @@
 # Cấu hình nginx loadbalancing .
 
+======================================
+
+- [1.  Mô hình](#1)
+
+- [2. Một số giải pháp](#2)
+  
+  - [2.1. Weight load balancing](#2.1)
+  
+  - [2.2. Round robin](#2.2)
+  
+  - [2.3. Least connection](#2.3)
+  
+  - [2.4. Health check](#2.4)
+  
+  - [2.5. Kết hợp các thuật toán](#2.5)
+
+======================================
+<a name="1"></a>
 ## 1. Mô hình.
 
 ![loadbalancing](/images/loadbalancing.png)
-
+<a name="2"></a>
 ## 2. Một số giải pháp.
-
+<a name="2.1"></a>
 ### 2.1. Weighted load balancing.
 
 - Đây là một thuật toán quan trọng trong loadbalancing, khi sử dụng thuật toán này sẽ giúp chúng ta giải quyết đươc bài toán phân chia các server xử lý. Vói mặc định của nginx sử dụng thuật toán round-robin thì các request sẽ được chuyển luân phiên đến các server để xử lý, tuy nhiên đối với Weighted load balancing thì chúng ta sẽ phân ra được khối lượng xử lý giữa các server.
@@ -149,7 +167,7 @@ Sau 3 request :
 
 ![loadbalancing2](/images/loadbalancing2.png)
 
-
+<a name="2.2"></a>
 ### 2.2.  Round Robin.
 
 - Round Robin là thuật toán mặc định của nginx khi chúng ta không có cấu hình gì thêm trong block `http` .
@@ -174,7 +192,7 @@ Sau 3 request :
             server 10.10.20.20:80;
         }
     ```
-
+<a name="2.3"></a>
 ### 2.3. Least connection.
 
 - Đây là thuật toán nâng cấp của round robin và weighted load balancing, thuật toán này sẽ giúp tối ưu hóa cân bằng tải cho hệ thống. 
@@ -198,7 +216,7 @@ Sau 3 request :
             server 10.10.20.20:80;
         }
     ```
-
+<a name="2.4"></a>
 ### 2.4. Health check.
 
 - Thuật toán này xác định máy chủ sẵn sàng xử lý request để gửi request đến server , điều này tránh được việc phải loại bỏ thủ công một máy chủ không sẵn sàng xử lý.
@@ -224,7 +242,7 @@ Sau 3 request :
             server 10.10.20.10:80;
         }
     ```
-
+<a name="2.5"></a>
 ### 2.5. Load balancing kết hợp thuật toán.
 
 - Các thuật toán không bao giờ có thể hữu dụng trong tất cả các trường hợp,việc lựa chọn thuật toán dựa trên cơ sở hạ tầng chúng ta có cũng như mục đích sử dụng, để có thể tối ưu hóa hơn trong việc cân bằng tải thông thường chúng ta sẽ kết hợp các thuật toán lại với nhau để có thể đưa ra được giải pháp cân bằng tải hợp lý nhất cho hệ thống. Sau đây là một số giải pháp kết hợp.
