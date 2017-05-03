@@ -13,7 +13,7 @@
 - ##### <a name="virtual-host">Virtual Host là gì?</a>
     
     + *Virtual Host* là một kỹ thuật cho phép nhiều website có thể dùng chung một địa chỉ ip duy nhất. Thuật ngữ này được sử dụng với các website sử dụng Apache server. Trong các website sử dụng Nginx server thì nó được gọi là các *Server Block* sử dụng khai báo qua *server_name* trong file cấu hình và có thể lắng nghe các chỉ thị để liên kết với tcp sockets.
-    + Đây là kỹ thuật dùng để cấu hình cho web server khi bạn muốn có nhiều tên miền được sử dụng chung trên cùng một máy chủ.
+    + Đây là kỹ thuật dùng để cấu hình cho web server khi bạn muốn có nhiều tên miền để cung cấp nhiều website được sử dụng chung trên cùng một máy chủ.
         ![virtual host](../images/virhost.png)
 
 
@@ -45,7 +45,7 @@
                     index   index.php index.html index.htm;
                 }
         Sau đó hãy lưu file này lại. Trên nội dung cấu hình trên, *vhost1.com* và *www.vhost1.com* là 2 domain ảo được tạo ra dùng cho server.
-        
+
         - Cấu hình trỏ host tới *Server Block* mà ta vừa tạo ra bằng việc thêm nội dung sau vào file *C:\Windows\System32\drivers\etc/hosts* trên client theo dạng:
 
                 ip-address      server_name
