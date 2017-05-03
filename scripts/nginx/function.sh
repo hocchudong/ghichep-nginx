@@ -6,7 +6,7 @@ function echocolor {
 }
 
 
-# Ham sua file cau hinh cua OpenStack
+# Ham sua file cau hinh cua 
 function ops_edit {
     crudini --set $1 $2 $3 $4
 }
