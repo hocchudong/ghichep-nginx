@@ -6,8 +6,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -25,8 +25,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -51,8 +51,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -70,8 +70,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -96,8 +96,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -124,8 +124,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -150,8 +150,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
@@ -178,8 +178,8 @@
 
     ```sh
     yum -y update && yum -y install git
-    git clone https://github.com/hocchudong/ghichep-nginx/tree/master/scripts/nginx.git
-    cd nginx/
+    git clone git clone https://github.com/hocchudong/ghichep-nginx.git
+    cd ghichep-nginx/scripts/nginx/
     chmod +x *.sh
     ```
 
