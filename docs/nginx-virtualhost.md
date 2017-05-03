@@ -202,14 +202,14 @@
 
             - Khi ta truy cập: middleware.com hoặc www.middleware.com qua trình duyệt của client:
 
-                ![middleware.com](../images/middleware.png)
+        >![middleware.com](../images/middleware.png)
 
             - Khi ta truy cập: vhost1.com hoặc www.vhost1.com qua trình duyệt của client:
 
-                ![vhost1.com](../images/vhost1.png)
+        >![vhost1.com](../images/vhost1.png)
 
             - Khi ta truy cập: vhost2.com hoặc www.vhost2.com qua trình duyệt của client:
 
-                ![vhost2.com](../images/vhost2.png)
+        >![vhost2.com](../images/vhost2.png)
 
     Chúc các bạn thành công.
