@@ -17,6 +17,8 @@
 
 - #### <a name="multiple-host">Cấu hình sử dụng nhiều Virtual Host trên cùng một server</a>
 
+    + ## Lưu ý: Nội dung cấu hình được thực hiện trên hệ điều hành CentOS 7 sử dụng thông qua giao diện dòng lệnh.
+
     + Nội dung trong phần này sẽ nói về cách để bạn thực hiện cấu hình server sao cho có thể nhiều website cùng sử dụng chung một địa chỉ ip duy nhất. Để thực hiện cấu hình, ta cần trải qua các bước sau:
 
         - Bước 1: Cài đặt nginx
