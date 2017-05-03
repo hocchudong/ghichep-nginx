@@ -5,7 +5,6 @@
 
 - [Virtual Host là gì?](#virtual-host)
 - [Cách tạo và cấu hình cho một Virtual Host](#configure)
-- [Các nội dung khác](#content-others)
 
 
 # Nội dung
