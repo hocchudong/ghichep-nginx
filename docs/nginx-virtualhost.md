@@ -5,7 +5,7 @@
 
 - [Virtual Host là gì?](#virtual-host)
 - [Cách tạo và cấu hình cho một Virtual Host](#configure)
-
+- [Cấu hình nhiều sử dụng nhiều Virtual Host trên cùng một server](#multiple-host)
 
 # Nội dung
 
@@ -89,3 +89,127 @@
             ![Server Block](../images/sb.png)
 
             Theo các bước làm trên, ta đã tiến hành thành công tạo một virtual host cho web server của mình.
+
+- ##### <a name="multiple-host">Cấu hình nhiều sử dụng nhiều Virtual Host trên cùng một server</a>
+
+    + Nội dung trong phần này sẽ nói về cách để bạn thực hiện cấu hình server sao cho có thể nhiều website cùng sử dụng chung một địa chỉ ip duy nhất. Để thực hiện cấu hình, ta cần trải qua các bước sau:
+
+        - Bước 1: Cấu hình domain chính cho server.
+        - Bước 2: Cấu hình tạo ra các virtual host (Server Block)
+        - Bước 3: Thực hiện trỏ host trên client để kiểm tra kết quả
+
+        Đó là 3 bước chính để thực hiện cấu hình cho nội dung phần này. Chi tiết như sau:
+
+    + Bước 1: Cấu hình domain chính cho server
+
+        - Bản chất của bước này chính là tạo ra một domain chính cho server thay vì truy cập tới server qua địa chỉ ip. Để làm điều này, ta tiến hành sửa nội dung của file cấu hình chính cho nginx tại */etc/nginx/nginx.conf*. Tìm tới dòng có nội dung *server_name     _;* trong vùng cấu hình của *http*. Thay *_* bằng tên miền mà bạn muốn sử dụng. Ví dụ:
+
+                http {
+                    ...
+                    server {
+                        ...
+                        server_name     www.middleware.com middleware.com;
+                        ...
+                    }
+                    ...
+                }
+
+    - Bước 2: Cấu hình tạo ra các Virtual Host.
+
+        - Nội dung cấu hình trong bước làm này tương tự như tạo một virtual host đã nói phía trên. Bạn có thể xem chi tiết ở [đây](#configure). Giả sử, trong bước làm này, ta muốn cấu hình đặt 2 virtual host thì ta làm như sau:
+
+        - Bước 1: Tạo virtual host thứ nhất.
+
+                # vi /etc/nginx/conf.d/vhost1.com.conf
+
+            Tiếp theo ta cần thêm nội dung cấu hình cho file vừa tạo trên với nội dung:
+
+                    server {
+                        listen      80;
+                        server_name     vhost1.com www.vhost1.com;
+                        access_log      /var/log/nginx/access-vhost1.com.log;
+                        error_log       /var/log/nginx/error-vhost1.com.log;
+                        root    /usr/share/nginx/vhost1.com;
+                        index   index.php index.html index.htm;
+                    }
+
+            Tạo thư mục chứa website cho virtual host này:
+
+                    # mkdir /usr/share/nginx/vhost1.com
+                    # chown nginx:nginx -R /usr/share/nginx/vhost1.com
+
+            Tạo một file index.html để kiểm tra kết quả:
+
+                # vi /usr/share/nginx/vhost1.com/index.html
+
+            Thêm vào file nội dung sau:
+
+                    <DOCTYPE html>
+                    <html>
+                      <head>
+                        <title>www.vhost1.com</title>
+                      </head>
+                      <body>
+                        <h1>Success: You Have Set Up a Virtual Host</h1>
+                      </body>
+                    </html>
+
+        - Bước 2: Tạo ra virtual host thứ hai.
+
+                # vi /etc/nginx/conf.d/vhost2.com.conf
+
+            Tiếp theo ta cần thêm nội dung cấu hình cho file vừa tạo trên với nội dung:
+
+                    server {
+                        listen      80;
+                        server_name     vhost2.com www.vhost2.com;
+                        access_log      /var/log/nginx/access-vhost2.com.log;
+                        error_log       /var/log/nginx/error-vhost2.com.log;
+                        root    /usr/share/nginx/vhost2.com;
+                        index   index.php index.html index.htm;
+                    }
+
+            Tạo thư mục chứa website cho virtual host này:
+
+                    # mkdir /usr/share/nginx/vhost2.com
+                    # chown nginx:nginx -R /usr/share/nginx/vhost2.com
+
+            Tạo một file index.html để kiểm tra kết quả:
+
+                # vi /usr/share/nginx/vhost2.com/index.html
+
+            Thêm vào file nội dung sau:
+
+                    <DOCTYPE html>
+                    <html>
+                      <head>
+                        <title>www.vhost2.com</title>
+                      </head>
+                      <body>
+                        <h1>Success: You Have Set Up a Virtual Host</h1>
+                      </body>
+                    </html>
+
+        - Bước 3: Tiến hành cấu hình trỏ host trên client để kiểm tra bằng việc thêm nội dung sau vào file *C:\Windows\System32\drivers\etc/hosts* trên client theo dạng:
+
+                ip-address      server_name[s]
+
+        Ví dụ:
+
+                192.168.19.35 middleware.com www.middleware.com vhost1.com www.vhost1.com www.vhost2.com vhost2.com
+
+        Kết quả nếu thực hiện đúng, sẽ trong thấy giống như thế này:
+
+            - Khi ta truy cập: middleware.com hoặc www.middleware.com qua trình duyệt của client:
+
+                ![middleware.com](../images/middleware.png)
+
+            - Khi ta truy cập: vhost1.com hoặc www.vhost1.com qua trình duyệt của client:
+
+                ![vhost1.com](../images/vhost1.png)
+
+            - Khi ta truy cập: vhost2.com hoặc www.vhost2.com qua trình duyệt của client:
+
+                ![vhost2.com](../images/vhost2.png)
+
+    Chúc các bạn thành công.
