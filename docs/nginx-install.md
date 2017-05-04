@@ -61,3 +61,7 @@
 - Truy cập vào địa chỉ để kiểm tra :
 
 ![centos_install](/images/centos_install.png)
+
+- Cấu hình để nginx tự khởi động sau mỗi lần restart server bằng việc sử dụng câu lệnh:
+
+        # systemctl enable nginx

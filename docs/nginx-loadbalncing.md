@@ -127,10 +127,10 @@ Sửa lại cấu hình như sau :
 
         upstream backends {
             server 10.10.20.10:80 weight=3;
-            server 10.10.20.20:80;
+            server 10.10.20.20:80 weight=2;
         }
 
-    # weight=3 có nghĩa là cứ 3 request gửi vào web 1 thì có 1 request gửi vào web 2.
+    # Cấu hình trên có nghĩa là cứ 5 request gửi tới server sẽ có 3 request vào web 1 và 2 request vào web 2.
 
 
     ```
@@ -208,9 +208,7 @@ Sau 3 request :
 
 #### Cấu hình .
 
-    ```sh
     vi /etc/nginx/nginx.conf
-    ``` 
 
 - tại block  `http` sửa lại như sau :
 
@@ -234,9 +232,8 @@ Sau 3 request :
 
 #### Cấu hình .
 
-    ```sh
-    vi /etc/nginx/nginx.conf
-    ``` 
+      vi /etc/nginx/nginx.conf
+
 
 - tại block  `http` sửa lại như sau :
 
@@ -272,6 +269,3 @@ Sau 3 request :
     ```
 
 - Tham khảo thêm một số giải pháp  tại [đây](https://www.nginx.com/blog/load-balancing-with-nginx-plus-part2/?_ga=1.129223048.568102583.1493302924)
-
-
-
