@@ -23,6 +23,13 @@
 ![loadbalancing](/images/loadbalancing.png)
 <a name="2"></a>
 ## 2. Một số giải pháp.
+
+- Cân bằng tải là một kỹ thuật thường dùng để tối ưu hóa việc sử dụng tài nguyên , tối đa hóa thông lượng , giảm độ trễ về đảm bảo tính chịu lỗi.
+
+- Chúng ta có thể sử dụng nginx như là một bộ cân bằng tải để phân phối lưu lượng truy cập đến các máy chủ nhằm mục đích cải thiện hiệu năng , khả năng mở rộng và độ tin cậy của các ứng dụng web với nginx.
+
+- Có rất nhiều thuật toán được xây dựng cho việc cân bằng tải, mỗi thuật toán đều có những ưu nhược điểm khác nhau, trong mỗi trường hợp sẽ có được tác dụng riêng, chúng ta cũng có thể kết hợp các thuật toán với nhau để giúp cho hệ thống của chúng ta hoạt động được tốt hơn. Tùy vào cơ sở hạ tầng và mục đích sử dụng thì chúng ta sẽ lựa chọn thuật toán phù hợp với hệ thống . Sau đây là một số thuật toán cân bằng tải.
+
 <a name="2.1"></a>
 ### 2.1. Weighted load balancing.
 
