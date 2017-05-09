@@ -71,6 +71,7 @@
 					# touch /etc/nginx/conf.d/web2-backends02.conf
 
 			- Thêm nội dung sau vào file vừa tạo:
+			
 					# vi /etc/nginx/conf.d/web2-backends02.conf
 
 				Nội dung:
