@@ -52,7 +52,7 @@
 
 - Khởi động dịch vụ :
 
-    ``sh
+    ```sh
     service keepalived start
     chkconfig keepalived on
     ```
