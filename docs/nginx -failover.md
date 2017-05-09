@@ -2,13 +2,13 @@
 
 ## I. Mô hình.
 
-    > ![failover.png](../images/failover.png)
+   > ![failover.png](../images/failover.png)
 
 ## II. Cài đặt và cấu hình.
 
 ### 1. Cấu hình trên các node trong hệ thống
 
-    - Lần lượt cấu hình cho 2 load balancer giống nhau và các node server theo hướng dẫn [tại đây](nginx-multiple-upstream.md)
+- Lần lượt cấu hình cho 2 load balancer giống nhau và các node server theo hướng dẫn [tại đây](nginx-multiple-upstream.md)
 
 ###  2. Cài đặt và cấu hình Keep alive
 

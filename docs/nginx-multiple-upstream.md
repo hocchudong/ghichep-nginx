@@ -2,7 +2,7 @@
 
 ## I. Mô hình.
 
-    > ![multiple](../images/multiple.png)
+   > ![multiple](../images/multiple.png)
 
 ## II. Cài đặt và cấu hình.
 
