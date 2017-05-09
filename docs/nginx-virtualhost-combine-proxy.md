@@ -135,8 +135,8 @@
 						}
 				
 				- Khởi động lại nginx
-
-					# service nginx restart
+				
+						# service nginx restart
 
 
 	- #### <a name="configure">Cấu hình trỏ host để kiểm tra kết quả</a>
