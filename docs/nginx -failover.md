@@ -7,6 +7,7 @@
     - IP Planning
 
         > ![ip plan](../images/ip-failover.png)
+        
 ## II. Cài đặt và cấu hình.
 
 ### 1. Cấu hình trên các node trong hệ thống
