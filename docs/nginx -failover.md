@@ -4,9 +4,8 @@
 
    > ![failover.png](../images/failover.png)
 
-    - IP Planning
-
-        > ![ip plan](../images/ip-failover.png)
+- IP Planning
+    > ![ip plan](../images/ip-failover.png)
         
 ## II. Cài đặt và cấu hình.
 
