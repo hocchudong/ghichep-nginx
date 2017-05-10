@@ -21,7 +21,9 @@
 		> ![Pictur](../images/proxy_pass&sb.png)
 
 		
+	+ IP Planning
 
+		> ![ip planning](../images/ip-multiple-upstream.png)
 
 - #### <a name="resolve">Tiến hành giải quyết</a>
 
