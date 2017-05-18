@@ -4,7 +4,7 @@
 
 - Mô hình triển khai :
 
-![galera](/images/galera.png)
+![galera](/images/pacemaker.png)
 
 - Phân hoạch địa chỉ IP :
 

@@ -71,7 +71,7 @@ chọn một DC mới rất nhanh chóng.
 
 - Mô hình triển khai :
 
-![pacemaker](/images/pacemaker.png)
+![pacemaker](/images/galera.png)
 
 - Phân hoạch địa chỉ IP :
 
