@@ -1,14 +1,34 @@
 # Ghi chép về pacemaker, corosync.
 
-## I . Một số khái niệm .
+====================================================
 
+# Mục Lục.
+
+- [I. Một số khái niệm.](#1)
+
+    - [1. Cluster là gì.](#1.1)
+
+    - [2. Resource agents.](#1.2)
+
+    - [3. Corosync.](#1.3)
+
+- [II. Kiến trúc pacemaker.](#2)
+
+- [III. Lab triển khai cluster cho nginx sử dụng pacemaker.](#3)
+
+
+====================================================
+
+<a name="1"></a>
+## I . Một số khái niệm .
+<a name="1.1"></a>
 ### 1. Cluster là gì.
 
 - Cluster là một kiến trúc nhằm đảm bảo nâng cao khả năng sẵn sàng cho các hệ thống mạng máy tính.
 
 - Clustering cho phép sử dụng nhiều máy chủ kết hợp với nhau tạo thành một cụm có khả năng chịu đựng hay chấp 
 nhận sai sót (fault-tolerant) nhằm nâng cao độ sẵn sàng của hệ thống mạng.
-
+<a name="1.2"></a>
 ### 2. Resource agents.
 
 - Pacemaker là một phần của cluster, có trách nhiệm quản lý các tài nguyên.
@@ -19,7 +39,7 @@ nhận sai sót (fault-tolerant) nhằm nâng cao độ sẵn sàng của hệ t
 systemctl hoặc 1 script chạy có mức độ. Nhưng nó được điều chỉnh để sử dụng trong cluster. Nó cũng định nghĩa các 
 thuộc tính có thể quản lý bởi cluster. Đối với 1 admin, Nó rất quan trọng để biết được thuộc tính nào có thể sử dụng 
 trước khi bắt đầu cấu hình resources.
-
+<a name="1.3"></a>
 ### 3. Corosync.
 
 - Corosync là một layer có nhiệm vụ quản lý các node thành viên.
@@ -28,7 +48,7 @@ trước khi bắt đầu cấu hình resources.
 
 - Pacemaker nhận update về những sự thay đổi trạng thái của các node trong cluster. Dựa vào đó nó có thể bắt đầu một sự 
 kiện nào đó ví dụ như migrate resource.
-
+<a name="2"></a>
 ## II. Kiến trúc pacemaker .
 
 ![pacemaker-architect](/images/pacemaker-architect.png)
@@ -64,8 +84,8 @@ chọn một DC mới rất nhanh chóng.
 - Trong trường hợp nó không hoạt động lrmd sẽ trở về crmd và thông báo rằng start resource fail. Sau đó Cluster có thể cố gắng thử lại resource trên nút khác trong cluster.
 
 - LRM cũng có trách nhiệm monitor operation và stop operation mà đang chạy trên node.
-
-## II. Lab triển khai cluster cho nginx sử dụng pacemaker.
+<a name="3"></a>
+## III. Lab triển khai cluster cho nginx sử dụng pacemaker.
 
 ### 1. Mô hình triển khai và phân hoạch IP.
 

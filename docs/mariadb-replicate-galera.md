@@ -271,3 +271,9 @@
     ```
 
 - Chúng ta tiến hành tắt các server DB đi để kiểm tra .
+
+# Tham khảo :
+
+- https://linoxide.com/cluster/mariadb-centos-7-galera-cluster-haproxy/
+
+- https://www.unixmen.com/install-wordpress-centos-7-linux/
