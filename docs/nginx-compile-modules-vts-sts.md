@@ -4,7 +4,7 @@
 # Mục lục
 - [Hướng dẫn cài đặt nginx-vts-module](#vts)
 - [Hướng dẫn cài đặt nginx-sts-module](#sts)
-- [Hướng dẫn cài đặt nginx](#)
+- [Hướng dẫn cài đặt nginx](#nginx)
 - [Các nội dung khác](#content-others)
 
 
@@ -17,9 +17,9 @@
 
 	+ Bước 1: Download source code của module nginx-vts-module:
 
-		mkdir /home/$USER/downloads
-		cd /home/$USER/downloads
-		git clone https://github.com/vozlt/nginx-module-vts.git
+			mkdir /home/$USER/downloads
+			cd /home/$USER/downloads
+			git clone https://github.com/vozlt/nginx-module-vts.git
 
 - #### <a name="sts">Hướng dẫn cài đặt nginx-stream-sts-module</a>
 	
@@ -27,24 +27,27 @@
 
 	+ Bước 1: Download source code của nginx-sts-module:
 
-		git clone https://github.com/vozlt/nginx-module-sts.git
+			git clone https://github.com/vozlt/nginx-module-sts.git
 
 	+ Bước 2: Download source code của nginx-stream-sts-module 2 module sts này phụ thuộc vào nhau:
 
-		git clone https://github.com/vozlt/nginx-module-stream-sts.git
+			git clone https://github.com/vozlt/nginx-module-stream-sts.git
 
 ___
 
 	# Lưu ý:
 
-		Để cài đặt được 2 module trên cho nginx, ta cần phải cài đặt nginx theo cách compile từ source code của nginx
+		Để cài đặt được 2 module trên cho nginx, 
+		ta cần phải cài đặt nginx theo cách compile 
+		từ source code của nginx
 		Cách cài đặt nginx xem hướng dẫn ở phía dưới.
 
 - #### <a name="nginx">Hướng dẫn cài đặt nginx</a>
 
 	+ Bước 1: Cài các trình biên dịch để thực hiện cài nginx từ source code.
 
-			yum -y install gcc gcc-c++ make zlib-devel pcre-devel openssl-devel git wget geoip-devel epel-release
+			yum -y install gcc gcc-c++ make zlib-devel pcre-devel \
+			openssl-devel git wget geoip-devel epel-release
 
 	+ Bước 2: Download source code nginx
 
@@ -213,11 +216,13 @@ ___
 
 		- http://status-nginx.com//status-web để kiểm tra thông tin về các truy cập tới VirtualHost
 
-
 		kết quả nhận được sẽ tương tự như sau:
 
-		![images](../images/Pastedimageat2017_05_25 05_09PM.png)
-		![images](../images/Pastedimageat2017_05_25 05_10PM.png)
+___
+
+![images](../images/sts 05_09PM.png)
+		
+![images](../images/vts 05_10PM.png)
 
 		
 - # <a name="content-others">Các nội dung khác</a>
