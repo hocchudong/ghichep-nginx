@@ -10,6 +10,14 @@
 
 # Nội dung
 
+- #### Mô hình bài toán cài đặt:
+
+	> ![image](diagram-vts-sts.png)
+
+- #### Kế hoạch đặt địa chỉ IP:
+
+	> ![images](ip-planning-vts-sts.png)
+	
 
 - #### <a name="vts">Hướng dẫn cài đặt nginx-vts-module</a>
 
