@@ -218,11 +218,17 @@ ___
 
 		kết quả nhận được sẽ tương tự như sau:
 
+<<<<<<< HEAD
 ___
 
 ![images](../images/sts 05_09PM.png)
 		
 ![images](../images/vts 05_10PM.png)
+=======
+	![images](../images/Pastedimageat2017_05_25 05_09PM.png)
+		
+	![images](../images/Pastedimageat2017_05_25 05_10PM.png)
+>>>>>>> 61293862a6f24c3387935b7967df212bbf114c06
 
 		
 - # <a name="content-others">Các nội dung khác</a>
