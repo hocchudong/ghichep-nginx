@@ -23,18 +23,27 @@
 <a name="2"></a>
 ## 2. Cài đặt.
 
-- Thêm repo nginx:
+- 
 
-    ```sh
-    yum install epel-release
-    ```
+- Thêm nginx repository bằng việc tạo một file */etc/yum.repos.d/nginx.repo* bằng câu lệnh sau:
 
-- Cài đặt nginx :
+      sudo vi /etc/yum.repos.d/nginx.repo
 
-  ```sh
-  yum install nginx
+  sau đó thêm nội dung này vào file:
 
-  ```
+      [nginx]
+      name=nginx repo
+      baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+      gpgcheck=0
+      enabled=1
+
+- Update lại hệ thống:
+
+       sudo yum update
+
+- Cài đặt nginx sử dụng câu lệnh:
+
+      sudo yum install nginx
 
 - Khởi động nginx :
 

@@ -21,7 +21,9 @@
 		> ![Pictur](../images/proxy_pass&sb.png)
 
 		
+	+ IP Planning
 
+		> ![ip planning](../images/ip-multiple-upstream.png)
 
 - #### <a name="resolve">Tiến hành giải quyết</a>
 
@@ -135,8 +137,8 @@
 						}
 				
 				- Khởi động lại nginx
-				
-						# service nginx restart
+
+					# service nginx restart
 
 
 	- #### <a name="configure">Cấu hình trỏ host để kiểm tra kết quả</a>
