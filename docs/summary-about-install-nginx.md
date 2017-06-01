@@ -19,7 +19,7 @@
 
 	![nginx-install](../images/nginx-modules.png)
 
-- #### <a name="options">Các options khi cài đặt nginx theo hướng compile/a>
+- #### <a name="options">Các options khi cài đặt nginx theo hướng compile</a>
 
 	![nginx-install](../images/nginx-options.png)
 
