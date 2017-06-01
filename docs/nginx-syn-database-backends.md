@@ -351,8 +351,8 @@
 			    }
 
 			    upstream web3 {
-			    server 10.10.10.30;
-			    server 10.10.10.40;
+			    	server 10.10.10.30;
+			    	server 10.10.10.40;
 			    }
 
 			    server {
