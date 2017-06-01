@@ -400,34 +400,34 @@
 	
 		+ Bước 1: Chạy các câu lệnh sau:
 		
-			useradd -r nginx
-			mkdir -p /var/cache/nginx/client_temp/
-			chown nginx. /var/cache/nginx/client_temp/
-			vi /lib/systemd/system/nginx.service
+				useradd -r nginx
+				mkdir -p /var/cache/nginx/client_temp/
+				chown nginx. /var/cache/nginx/client_temp/
+				vi /lib/systemd/system/nginx.service
 			
 		+ Bước 2: Thêm nội dung sau vào file, sau đó lưu lại:
 		
-			[Unit]
-			Description=The NGINX HTTP and reverse proxy server
-			After=syslog.target network.target remote-fs.target nss-lookup.target
+				[Unit]
+				Description=The NGINX HTTP and reverse proxy server
+				After=syslog.target network.target remote-fs.target nss-lookup.target
 
-			[Service]
-			Type=forking
-			PIDFile=/run/nginx.pid
-			ExecStartPre=/usr/sbin/nginx -t
-			ExecStart=/usr/sbin/nginx
-			ExecReload=/bin/kill -s HUP \$MAINPID
-			ExecStop=/bin/kill -s QUIT \$MAINPID
-			PrivateTmp=true
+				[Service]
+				Type=forking
+				PIDFile=/run/nginx.pid
+				ExecStartPre=/usr/sbin/nginx -t
+				ExecStart=/usr/sbin/nginx
+				ExecReload=/bin/kill -s HUP \$MAINPID
+				ExecStop=/bin/kill -s QUIT \$MAINPID
+				PrivateTmp=true
 
-			[Install]
-			WantedBy=multi-user.target
+				[Install]
+				WantedBy=multi-user.target
 			
 		+ Bước 3: Tiếp tục chạy các câu lệnh sau để khởi động nginx:
 
-			chmod a+rx /lib/systemd/system/nginx.service
-			systemctl start nginx
-			systemctl enable nginx
+				chmod a+rx /lib/systemd/system/nginx.service
+				systemctl start nginx
+				systemctl enable nginx
 			
 			
 	+ Cấp quyền truy cập database từ xa, thực hiện trên node db01:
