@@ -171,7 +171,7 @@
 
 		- Câu lệnh này chỉ thực hiện trên một node, giả sử ta chạy trên node db01:
 
-				galera new_cluster
+				galera_new_cluster
 
 			sau khi câu lệnh thực hiện chạy xong,  thực hiện chạy lệnh sau trên cả 2 node db02 và db03 để tiến hành đồng bộ:
 
@@ -396,7 +396,41 @@
 			firewall-cmd --reload
 			systemctl start nginx
 			systemctl enable nginx
+			
+	+ Nếu như khi thực hiện các câu lệnh phía trên xảy ra lỗi thì bạn cần phải tiếp tục làm theo các bước dưới đây:
+	
+		+ Bước 1: Chạy các câu lệnh sau:
+		
+				useradd -r nginx
+				mkdir -p /var/cache/nginx/client_temp/
+				chown nginx. /var/cache/nginx/client_temp/
+				vi /lib/systemd/system/nginx.service
+			
+		+ Bước 2: Thêm nội dung sau vào file, sau đó lưu lại:
+		
+				[Unit]
+				Description=The NGINX HTTP and reverse proxy server
+				After=syslog.target network.target remote-fs.target nss-lookup.target
 
+				[Service]
+				Type=forking
+				PIDFile=/run/nginx.pid
+				ExecStartPre=/usr/sbin/nginx -t
+				ExecStart=/usr/sbin/nginx
+				ExecReload=/bin/kill -s HUP \$MAINPID
+				ExecStop=/bin/kill -s QUIT \$MAINPID
+				PrivateTmp=true
+
+				[Install]
+				WantedBy=multi-user.target
+			
+		+ Bước 3: Tiếp tục chạy các câu lệnh sau để khởi động nginx:
+
+				chmod a+rx /lib/systemd/system/nginx.service
+				systemctl start nginx
+				systemctl enable nginx
+			
+			
 	+ Cấp quyền truy cập database từ xa, thực hiện trên node db01:
 
 			mysql -u root -p
