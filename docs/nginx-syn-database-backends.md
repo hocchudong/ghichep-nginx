@@ -396,13 +396,17 @@
 			systemctl start nginx
 			systemctl enable nginx
 			
-	+ Nếu như khi thực hiện các câu lệnh phía trên xảy ra lỗi thì bạn cần chạy các câu lệnh sau đây:
+	+ Nếu như khi thực hiện các câu lệnh phía trên xảy ra lỗi thì bạn cần phải tiếp tục làm theo các bước dưới đây:
 	
+		+ Bước 1: Chạy các câu lệnh sau:
+		
 			useradd -r nginx
 			mkdir -p /var/cache/nginx/client_temp/
 			chown nginx. /var/cache/nginx/client_temp/
-
-			cat > /lib/systemd/system/nginx.service << H2
+			vi /lib/systemd/system/nginx.service
+			
+		+ Bước 2: Thêm nội dung sau vào file, sau đó lưu lại:
+		
 			[Unit]
 			Description=The NGINX HTTP and reverse proxy server
 			After=syslog.target network.target remote-fs.target nss-lookup.target
@@ -418,11 +422,13 @@
 
 			[Install]
 			WantedBy=multi-user.target
-			H2
+			
+		+ Bước 3: Tiếp tục chạy các câu lệnh sau để khởi động nginx:
 
 			chmod a+rx /lib/systemd/system/nginx.service
 			systemctl start nginx
 			systemctl enable nginx
+			
 			
 	+ Cấp quyền truy cập database từ xa, thực hiện trên node db01:
 
