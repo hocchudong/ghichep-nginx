@@ -171,7 +171,7 @@
 
 		- Câu lệnh này chỉ thực hiện trên một node, giả sử ta chạy trên node db01:
 
-				galera new_cluster
+				galera_new_cluster
 
 			sau khi câu lệnh thực hiện chạy xong,  thực hiện chạy lệnh sau trên cả 2 node db02 và db03 để tiến hành đồng bộ:
 
