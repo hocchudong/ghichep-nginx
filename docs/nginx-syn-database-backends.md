@@ -395,7 +395,35 @@
 			firewall-cmd --reload
 			systemctl start nginx
 			systemctl enable nginx
+			
+	+ Nếu như khi thực hiện các câu lệnh phía trên xảy ra lỗi thì bạn cần chạy các câu lệnh sau đây:
+	
+			useradd -r nginx
+			mkdir -p /var/cache/nginx/client_temp/
+			chown nginx. /var/cache/nginx/client_temp/
 
+			cat > /lib/systemd/system/nginx.service << H2
+			[Unit]
+			Description=The NGINX HTTP and reverse proxy server
+			After=syslog.target network.target remote-fs.target nss-lookup.target
+
+			[Service]
+			Type=forking
+			PIDFile=/run/nginx.pid
+			ExecStartPre=/usr/sbin/nginx -t
+			ExecStart=/usr/sbin/nginx
+			ExecReload=/bin/kill -s HUP \$MAINPID
+			ExecStop=/bin/kill -s QUIT \$MAINPID
+			PrivateTmp=true
+
+			[Install]
+			WantedBy=multi-user.target
+			H2
+
+			chmod a+rx /lib/systemd/system/nginx.service
+			systemctl start nginx
+			systemctl enable nginx
+			
 	+ Cấp quyền truy cập database từ xa, thực hiện trên node db01:
 
 			mysql -u root -p
