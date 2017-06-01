@@ -290,103 +290,104 @@
 
 
 			events {
-				worker_connections  1024;
+			    worker_connections  1024;
 			}
+
 
 			## Trang thai cua cac stream
 			stream {
-				upstream stream_backend {
-					zone tcp_servers 64k;
-					server 10.10.10.20:3306;
-					server 10.10.10.30:3306 backup;
-					server 10.10.10.40:3306 backup;
-				}
-				server {
-					listen 3306;
-					proxy_pass stream_backend;
-					proxy_connect_timeout 1s;
-				}
+			    server_traffic_status_zone;
+			    upstream db-backends {
+			        server 10.10.10.20:3306;
+			        server 10.10.10.30:3306 backup;
+			        server 10.10.10.40:3306 backup;
+			    }
+			    server {
+			        listen 3306;
+			        proxy_pass db-backends;
+			    }
 			}
 
+
 			http {
-				include       mime.types;
-				default_type  application/octet-stream;
-				
-				## Trang thai cua cac VHOST
-				stream_server_traffic_status_zone;
-				vhost_traffic_status_zone;
-				geoip_country /usr/share/GeoIP/GeoIP.dat;
-				vhost_traffic_status_filter_by_set_key $geoip_country_code country::*;
-				
-				sendfile        on;
-				#tcp_nopush     on;
+			    include       mime.types;
+			    default_type  application/octet-stream;
 
-				#keepalive_timeout  0;
-				keepalive_timeout  65;
+			    ## Trang thai cua cac VHOST
+			    stream_server_traffic_status_zone;
+			    vhost_traffic_status_zone;
+			    geoip_country /usr/share/GeoIP/GeoIP.dat;
+			    vhost_traffic_status_filter_by_set_key $geoip_country_code country::*;
 
-				#gzip  on;
-				upstream web1 {
-					server 10.10.10.20;
-					server 10.10.10.30;
-				}
-				server {
-					listen 80;
-					server_name server01;
-					location / {
-					proxy_pass http://web1;
-					}
-				}
+			    sendfile        on;
+			    #tcp_nopush     on;
 
-				upstream web2 {
-					server 10.10.10.20;
-					server 10.10.10.40;
-				}
-				server {
-					listen 80;
-					server_name server02;
-					location / {
-					proxy_pass http://web2;
-					}
-				}
+			    #keepalive_timeout  0;
+			    keepalive_timeout  65;
 
-				upstream web3 {
-				server 10.10.10.30;
-				server 10.10.10.40;
-				}
+			    #gzip  on;
+			    upstream web1 {
+			        server 10.10.10.20;
+			        server 10.10.10.30;
+			    }
+			    server {
+			        listen 80;
+			        server_name server01;
+			        location / {
+			            proxy_pass http://web1;
+			        }
+			    }
 
-				server {
-					listen 80;
-					server_name server03;
-					location / {
-					proxy_pass http://web3;
-					}
-				}
-				server {
-					listen       80;
-					server_name  status-nginx.com;
-					location / {
-						  return 301 /status-web;
-					}
-					
-					## Prefix cua trang xem trang thai
-					
-					location /status-stream {
-						stream_server_traffic_status_display;
-						stream_server_traffic_status_display_format html;
-					}
-					vhost_traffic_status_filter_by_set_key $geoip_country_code country::$server_name;
-					location /status-web {
-						vhost_traffic_status_display;
-						vhost_traffic_status_display_format html;
-					}
-					error_page   500 502 503 504  /50x.html;
-					location = /50x.html {
-						root   html;
-					}
-					location /status-native {
-						stub_status on;
-					}
-				}
+			    upstream web2 {
+			        server 10.10.10.20;
+			        server 10.10.10.40;
+			    }
+			    server {
+			        listen 80;
+			        server_name server02;
+			        location / {
+			            proxy_pass http://web2;
+			        }
+			    }
+
+			    upstream web3 {
+			    server 10.10.10.30;
+			    server 10.10.10.40;
+			    }
+
+			    server {
+			        listen 80;
+			        server_name server03;
+			        location / {
+			            proxy_pass http://web3;
+			        }
+			    }
+			    server {
+			        listen       80;
+			        server_name  status-nginx.com;
+			        location / {
+			            return 301 /status-web;
+			        }
+			        
+			        ## Prefix cua trang xem trang thai
+			        
+			        location /status-stream {
+			            stream_server_traffic_status_display;
+			            stream_server_traffic_status_display_format html;
+			        }
+			        vhost_traffic_status_filter_by_set_key $geoip_country_code country::$server_name;
+			        location /status-web {
+			            vhost_traffic_status_display;
+			            vhost_traffic_status_display_format html;
+			        }
+			        error_page   500 502 503 504  /50x.html;
+			        location = /50x.html {
+			            root   html;
+			        }
+			        location /status-native {
+			            stub_status on;
+			        }
+			    }
 			}
 
 	+ Khởi động nginx, mở port 3306:
@@ -403,7 +404,7 @@
 		sau đó chạy các câu lệnh sau:
 
 			CREATE USER 'root'@'%' IDENTIFIED BY 'your_password';
-			GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.10.10.10';
+			GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.10.10.10' identified by 'your_password';
 
 	+ Tiến hành cấu hình trỏ host trên client để kiểm tra bằng việc thêm nội dung sau vào file C:\Windows\System32\drivers\etc/hosts ( đối với Windows), tại /etc/hosts ( đối với Linux) trên client theo dạng:
 
@@ -415,6 +416,7 @@
 
 		+ http://status-nginx.com//status-web để kiểm tra thông tin về các truy cập tới VirtualHost
 
+		+ Tải phần mềm HeidiSQL về để kiểm tra việc truy xuất database thông qua lb01 đã thành công hay chưa.
 
 - # <a name="content-others">Các nội dung khác</a>
 
