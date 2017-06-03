@@ -390,6 +390,8 @@
 			    }
 			}
 
+		bạn cũng có thể sử dụng nội dung của file cấu hình sau đây (config-nginx-stream-tcp-in-stream-block.conf)[../files/config-nginx-stream-tcp-in-stream-block.conf]
+
 	+ Khởi động nginx, mở port 3306:
 
 			firewall-cmd --add-port=3306/tcp --permanent
