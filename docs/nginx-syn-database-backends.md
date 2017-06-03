@@ -390,7 +390,7 @@
 			    }
 			}
 
-		bạn cũng có thể sử dụng nội dung của file cấu hình sau đây (config-nginx-stream-tcp-in-stream-block.conf)[../files/config-nginx-stream-tcp-in-stream-block.conf]
+		bạn cũng có thể sử dụng nội dung của file cấu hình sau đây (config-nginx-stream-tcp-in-stream-block.conf)[https://raw.githubusercontent.com/BoTranVan/ghichep-nginx/master/files/config-nginx-stream-tcp-in-stream-block.conf]
 
 	+ Khởi động nginx, mở port 3306:
 
