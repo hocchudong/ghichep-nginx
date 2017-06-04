@@ -307,17 +307,14 @@
 
 	+ Kiểm tra lại trạng thái của `pacemaker` bằng lệnh `systemctl startus pcsd`, kết quả như sau:
 
-```
-		 	Loaded: loaded (/usr/lib/systemd/system/pcsd.service; enabled; vendor preset: disabled)
-			Active: active (running) since Sun 2017-06-04 23:10:52 EDT; 1h 7min ago
+	 	Loaded: loaded (/usr/lib/systemd/system/pcsd.service; enabled; vendor preset: disabled)
+		Active: active (running) since Sun 2017-06-04 23:10:52 EDT; 1h 7min ago
 		 Main PID: 613 (pcsd)
 			CGroup: /system.slice/pcsd.service
 		           └─613 /usr/bin/ruby /usr/lib/pcsd/pcsd > /dev/null &
 
 		Jun 04 23:10:47 lb01 systemd[1]: Starting PCS GUI and remote configuration interface...
 		Jun 04 23:10:52 lb01 systemd[1]: Started PCS GUI and remote configuration interface.
-
-```
 
 	+ Thiết lập mật khẩu cho người dùng `hacluster`:
 
