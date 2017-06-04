@@ -346,7 +346,8 @@
 			trong câu lệnh trên:
 
 				- ha_cluster là tên của cluster mà bạn sẽ tạo, mục này có thể nhập tùy ý.
-				- lb01 lb02 và lb03 là hostname các máy chủ trong cụm cluster. Muốn sử dụng tên này thì bạn phải chắc chắn đã khai báo trong file /etc/hosts
+				- lb01 lb02 và lb03 là hostname các máy chủ trong cụm cluster.
+				  Muốn sử dụng tên này thì bạn phải chắc chắn đã khai báo trong file /etc/hosts
 
 			kết quả nhân được như sau:
 
