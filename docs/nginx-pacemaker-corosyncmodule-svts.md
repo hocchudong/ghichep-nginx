@@ -233,7 +233,7 @@
 			    }
 			    server {
 			        listen       80;
-			        server_name  status-nginx.com;
+			        server_name  _;
 			        location / {
 			            return 301 /status-web;
 			        }
@@ -265,6 +265,12 @@
 
 			systemctl start nginx 
 			systemctl enable nginx
+
+	+ Kiểm tra kết quả:
+
+		- Sử dụng trình duyệt client truy cập tới địa chỉ http://your_ip/status-web để kiểm tra thông tin lưu lượng của virtual host trên server.
+		- truy cập http://your_ip/status-stream để kiểm tra thông tin lưu lượng của stream tcp trên server.
+
 
 - #### <a name="pacemaker">Cài đặt pacemaker và corosync để tạo cluster cho nginx</a>
 
