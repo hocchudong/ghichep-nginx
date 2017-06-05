@@ -419,8 +419,8 @@
 				PIDFile=/run/nginx.pid
 				ExecStartPre=/usr/sbin/nginx -t
 				ExecStart=/usr/sbin/nginx
-				ExecReload=/bin/kill -s HUP \$MAINPID
-				ExecStop=/bin/kill -s QUIT \$MAINPID
+				ExecReload=/bin/kill -s HUP $MAINPID
+				ExecStop=/bin/kill -s QUIT $MAINPID
 				PrivateTmp=true
 
 				[Install]
